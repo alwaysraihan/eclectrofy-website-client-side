@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ManufacturerTools = () => {
-    const [inventoryItemes, setEnventoryItems] = useState([]);
+    const [toolsData, setToolsData] = useState([]);
     useEffect(() => {
         const loadData = async () => {
             try {
                 const { data } = await axios.get(`http://localhost:5000/tools`);
-                setEnventoryItems(data);
+                setToolsData(data);
             } catch (err) {
                 console.error(err);
             }
@@ -21,7 +21,7 @@ const ManufacturerTools = () => {
                 <h1 className="text-center text-gray-600 text-2xl md:text-5xl font-semibold py-10 md:pt-20 ">
                     Our Tools
                 </h1>
-                {inventoryItemes.length === 0 ? (
+                {toolsData.length === 0 ? (
                     <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
                         <div
                             className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
@@ -35,7 +35,7 @@ const ManufacturerTools = () => {
                     ""
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-10 justify-center   px-[2%] md:px-[3%] lg:px-[4%] xl:px-[10%]">
-                    {inventoryItemes.map((item) => (
+                    {toolsData.map((item) => (
                         <div key={item._id} className="w-full p-2 ">
                             <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
                                 <div
