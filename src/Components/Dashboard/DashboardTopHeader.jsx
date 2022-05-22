@@ -15,10 +15,10 @@ const DashboardTopHeader = () => {
     }, []);
     return (
         <>
-            <div className=" w-[100%] flex items-center justify-between px-2 md:px-5 shadow-md bg-white py-2 bg-opacity-50">
+            <div className=" w-[100%] flex items-center justify-between px-2 md:px-5 shadow-md bg-[rgb(0,7,61)] py-2 ">
                 <div>
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-500 font-semibold ">
-                        Admin Pannel
+                    <h1 className="text-xl md:text-2xl lg:text-3xl text-blue-500 font-semibold ">
+                        My Dashboard
                     </h1>
                 </div>
                 <div className="w-16 h-16 relative">

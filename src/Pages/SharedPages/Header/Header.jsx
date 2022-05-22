@@ -82,21 +82,6 @@ const Header = () => {
                         )}
 
                         {user ? (
-                            <NavLink
-                                to="/my-cart"
-                                className={({ isActive }) =>
-                                    isActive
-                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
-                                        : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
-                                }
-                            >
-                                My Cart
-                            </NavLink>
-                        ) : (
-                            ""
-                        )}
-
-                        {user ? (
                             <div className="relative antialiased -order-1 lg:order-1">
                                 <div className=" group cursor-pointer relative ">
                                     {user.photoURL ? (
@@ -134,14 +119,6 @@ const Header = () => {
                                                         className="block px-2 py-1 text-teal-600  transition rounded-md hover:bg-gray-100"
                                                     >
                                                         Dashboard Home
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        to="/my-cart"
-                                                        className="block px-2 py-1  text-teal-600 transition rounded-md hover:bg-gray-100"
-                                                    >
-                                                        My Cart
                                                     </Link>
                                                 </li>
                                             </ul>

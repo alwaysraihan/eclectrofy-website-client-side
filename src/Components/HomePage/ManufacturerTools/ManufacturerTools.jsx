@@ -87,7 +87,7 @@ const ManufacturerTools = () => {
                                 <div className="flex justify-end text-center mt-2 items-center px-2 pb-2">
                                     <div className="w-1/2 p-2">
                                         <Link
-                                            to={`buy/${item._id}`}
+                                            to={`purchase/${item._id}`}
                                             className="block w-full bg-yellow-500 hover:bg-yellow-600 text-white border-2 border-yellow-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                                         >
                                             Buy Now

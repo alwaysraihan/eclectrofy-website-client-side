@@ -1,10 +1,38 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-const MyCart = () => {
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+import { toast } from "react-toastify";
+const Purchase = () => {
     const { id } = useParams();
-    const [toolData, setToolData] = useState([]);
+    const [quantity, setQuantity] = useState(0);
+    const [minquantity, setMinQuantity] = useState(0);
+    const [availableQnty, setAvailableQnty] = useState(0);
+    const [price, setPrice] = useState(0);
+
+    const [subTotal, setSubTotal] = useState(0);
+    const [toolData, setToolData] = useState({});
+    const increaseQuantiry = () => {
+        if (availableQnty === quantity) {
+            return toast.error(
+                `You can not order more. Available Quantity is- ${availableQnty}`
+            );
+        } else {
+            setSubTotal(price * (quantity + 1));
+            setQuantity(quantity + 1);
+        }
+    };
+    const decraseQuantity = () => {
+        if (quantity <= minquantity) {
+            return toast.error(
+                `You have to  order more. Miminmu Quantity is- ${availableQnty}`
+            );
+        } else {
+            setQuantity(quantity - 1);
+            setSubTotal(price * quantity);
+        }
+    };
+
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -17,16 +45,29 @@ const MyCart = () => {
             }
         };
         loadData();
-    }, [id]);
-    console.log(toolData);
+        setQuantity(parseInt(toolData.minimumQuntity));
+        setSubTotal(
+            parseInt(toolData.price) * parseInt(toolData.minimumQuntity)
+        );
+        setAvailableQnty(parseInt(toolData.availableQunatity));
+        setMinQuantity(parseInt(toolData.minimumQuntity));
+        setPrice(parseInt(toolData.price));
+    }, [
+        id,
+        toolData.availableQunatity,
+        toolData.minQunatity,
+        toolData.minimumQuntity,
+        toolData.price,
+    ]);
+
     if (!toolData) {
         return (
             <p className="text-center text-xl text-violet-500">Loading....</p>
         );
     }
-    const { img, name, price, description, minimumQuntity, availableQunatity } =
-        toolData;
+    const { img, name, description } = toolData;
     // here add later if bed response or data not found then show not found page
+
     return (
         <>
             <section class="text-gray-600 body-font overflow-hidden px-5">
@@ -34,7 +75,7 @@ const MyCart = () => {
                     <div class="lg:w-4/5 mx-auto flex items-center flex-wrap">
                         <img
                             alt="ecommerce"
-                            class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                            class="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center rounded"
                             src={img}
                         />
                         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -151,36 +192,26 @@ const MyCart = () => {
                                         Your Order Quantity
                                     </span>
                                     <div class="relative">
-                                        <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:border-yellow-500 text-base pl-3 pr-10">
-                                            <option>{minimumQuntity}</option>
-                                            <option>
-                                                {parseInt(minimumQuntity) + 5}
-                                            </option>
-                                            <option>
-                                                {parseInt(availableQunatity) -
-                                                    5}
-                                            </option>
-                                            <option>{availableQunatity}</option>
-                                        </select>
-                                        <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                            <svg
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                class="w-4 h-4"
-                                                viewBox="0 0 24 24"
+                                        <div className=" flex justify-between gap-1 items-center">
+                                            <button onClick={decraseQuantity}>
+                                                <AiFillMinusCircle className="text-yellow-500 text-xl cursor-pointer " />
+                                            </button>
+                                            <span
+                                                className="text-2xl text-teal-500 font-bold"
+                                                id="quantity"
                                             >
-                                                <path d="M6 9l6 6 6-6"></path>
-                                            </svg>
-                                        </span>
+                                                {!isNaN(quantity) && quantity}
+                                            </span>
+                                            <button onClick={increaseQuantiry}>
+                                                <AiFillPlusCircle className="text-yellow-500 text-xl cursor-pointer " />
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <span class="title-font font-medium text-2xl text-gray-900">
-                                    ${price}
+                                    ${subTotal}
                                 </span>
                                 <button class="flex ml-auto md:ml-10 text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
                                     Buy Now
@@ -199,4 +230,4 @@ const MyCart = () => {
     );
 };
 
-export default MyCart;
+export default Purchase;
