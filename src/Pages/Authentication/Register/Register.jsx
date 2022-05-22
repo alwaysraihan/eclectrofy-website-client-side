@@ -6,10 +6,10 @@ import {
     useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import auth from "../../../Firebase-Setup/firebase.init";
 import Loading from "../../SharedPages/Loading/Loading";
+import auth from "../../../Firebase-Setup/firebase.init";
 
-const Login = () => {
+const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth, {
             sendEmailVerification: true,
@@ -233,4 +233,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
