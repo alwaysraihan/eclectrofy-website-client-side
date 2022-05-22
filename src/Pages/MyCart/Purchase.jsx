@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+import PurchaseModal from "../../Components/Dashboard/PuchaseModal";
 const Purchase = () => {
     const { id } = useParams();
+    const [purchaseData, setPurchaseData] = useState(null);
     const [quantity, setQuantity] = useState(0);
     const [minquantity, setMinQuantity] = useState(0);
     const [availableQnty, setAvailableQnty] = useState(0);
@@ -213,9 +215,15 @@ const Purchase = () => {
                                 <span class="title-font font-medium text-2xl text-gray-900">
                                     ${subTotal}
                                 </span>
-                                <button class="flex ml-auto md:ml-10 text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
+
+                                <label
+                                    onClick={() => setPurchaseData(toolData)}
+                                    disabled={setToolData.quantity > 0}
+                                    htmlFor="purchase-modal"
+                                    className="flex ml-auto md:ml-10 text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded"
+                                >
                                     Buy Now
-                                </button>
+                                </label>
                             </div>
                             <p class="leading-relaxed mt-4">
                                 <span className="font-semibold">Note:</span>{" "}
@@ -226,6 +234,14 @@ const Purchase = () => {
                     </div>
                 </div>
             </section>
+            {purchaseData && (
+                <PurchaseModal
+                    purchaseData={purchaseData}
+                    quantity={quantity}
+                    subTotal={subTotal}
+                    setPurchaseData={setPurchaseData}
+                ></PurchaseModal>
+            )}
         </>
     );
 };

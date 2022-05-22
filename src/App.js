@@ -1,5 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import AddReview from "./Components/Dashboard/AddReview";
+import MyOrders from "./Components/Dashboard/MyOrders";
+import MyProfile from "./Components/Dashboard/MyProfile";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
@@ -27,7 +30,32 @@ function App() {
                             <Dashboard />
                         </RequireAuth>
                     }
-                ></Route>
+                >
+                    <Route
+                        index
+                        element={
+                            <RequireAuth>
+                                <MyProfile />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="myOrders"
+                        element={
+                            <RequireAuth>
+                                <MyOrders />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="addReview"
+                        element={
+                            <RequireAuth>
+                                <AddReview />
+                            </RequireAuth>
+                        }
+                    />
+                </Route>
             </Routes>
             <ToastContainer />
         </>

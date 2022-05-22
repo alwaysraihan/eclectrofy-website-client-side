@@ -1,16 +1,42 @@
 import React from "react";
-import DashboardSlider from "../../Components/Dashboard/DashboardSlider";
+import { Link, Outlet } from "react-router-dom";
+
 import DashboardTopHeader from "../../Components/Dashboard/DashboardTopHeader";
 
 const Dashboard = () => {
     return (
         <>
-            <div className="flex relative lg:static">
-                <div>
-                    <DashboardSlider />
+            <DashboardTopHeader />
+            <div className="drawer drawer-mobile ">
+                <input
+                    id="dashboard-sidebar"
+                    type="checkbox"
+                    className="drawer-toggle"
+                />
+                <div className="drawer-content ">
+                    <h2 className="text-3xl font-bold text-purple-500">
+                        <Outlet />
+                    </h2>
+                    <Outlet />
                 </div>
-                <div className="w-[100%]">
-                    <DashboardTopHeader />
+
+                <div className="drawer-side ">
+                    <label
+                        htmlFor="dashboard-sidebar"
+                        className="drawer-overlay"
+                    ></label>
+                    <ul className="menu shadow-md bg-[rgb(0,7,61)] p-4 overflow-y-auto w-48 font-semibold  text-white">
+                        {/* <!-- Sidebar content here --> */}
+                        <li>
+                            <Link to="/dashboard">My Profile</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/myOrders">My Orders</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/addReview">Add a Review</Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </>
