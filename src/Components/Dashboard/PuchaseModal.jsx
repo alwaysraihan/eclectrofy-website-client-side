@@ -9,40 +9,41 @@ const PurchaseModal = ({
     quantity,
     subTotal,
 }) => {
-    const { _id, name } = purchaseData;
+    const { name, img } = purchaseData;
 
     const [user] = useAuthState(auth);
     const handleBooking = (event) => {
         event.preventDefault();
-        // const slot = event.target.slot.value;
-        // const booking = {
-        //     treatmentId: _id,
-        //     treatment: name,
-        //     slot,
-        //     patient: user.email,
-        //     patientName: user.displayName,
-        //     phone: event.target.phone.value,
-        // };
-        // fetch("http://localhost:5000/booking", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify(booking),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         if (data?.success) {
-        //             toast(`Appointment is set, at ${slot} `);
-        //         } else if (!data.success) {
-        //             toast.error(
-        //                 `Already have an appointment on ${data.booking?.date} at ${data.booking?.slot}`
-        //             );
-        //         }
+        const booking = {
+            productName: name,
+            productImg: img,
+            quantity,
+            subTotal: subTotal,
+            buyerName: user.displayName,
+            buyerEmail: user.email,
+            buyerAddress: event.target.address.value,
+            phone: event.target.phone.value,
+        };
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(booking),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data?.success) {
+                    toast(
+                        `${user.displayName} Your order Successfully Placed.`
+                    );
+                } else if (!data.success) {
+                    toast.error(`${user.displayName} Something went wrong`);
+                }
 
-        // for closeing the modal
-        //     setPurchaseData(null);
-        // });
+                // for closeing the modal
+                setPurchaseData(null);
+            });
     };
     return (
         <>
