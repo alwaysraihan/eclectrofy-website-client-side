@@ -17,13 +17,12 @@ const Banner = () => {
                     <div className="text-center">
                         <h2 className="text-2xl md:text-4xl tracking-tight leading-10 font-medium sm:text-5xl uppercase text-white sm:leading-none ">
                             <span className="text-pink-400 font-bold">
-                                Perfume
+                                Manufacturer
                             </span>{" "}
-                            Warehouse
+                            Tools
                         </h2>
                         <p className="mt-3 text-white  sm:max-w-xl sm:mx-auto md:mt-5">
-                            Best perfume warehouse with many cool featuers.
-                            Manage your stock perfume online.
+                            Best Manufacturer in over the world.
                         </p>
                         <div className="mt-3 md:mt-8 sm:flex justify-center">
                             <div className="rounded-md shadow">

@@ -18,7 +18,7 @@ const Header = () => {
                 <div className="container px-4  lg:px-4  mx-auto lg:flex lg:items-center">
                     <div className="flex justify-between items-center">
                         <Link to="/" className="font-bold text-xl text-white">
-                            WareHouse
+                            Manufacturer
                         </Link>
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
@@ -53,7 +53,7 @@ const Header = () => {
                                     : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                             }
                         >
-                            About
+                            My Portfolio
                         </NavLink>
                         <NavLink
                             to="blogs"
@@ -68,42 +68,29 @@ const Header = () => {
 
                         {user ? (
                             <NavLink
-                                to="/dashboard/manage-inventory"
+                                to="/dashboard"
                                 className={({ isActive }) =>
                                     isActive
                                         ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
                                         : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                                 }
                             >
-                                Manage Inventory
+                                Dashboard
                             </NavLink>
                         ) : (
                             ""
                         )}
+
                         {user ? (
                             <NavLink
-                                to="/dashboard/add-inventory-item"
+                                to="/dashboard/my-cart"
                                 className={({ isActive }) =>
                                     isActive
                                         ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
                                         : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                                 }
                             >
-                                Add Item
-                            </NavLink>
-                        ) : (
-                            ""
-                        )}
-                        {user ? (
-                            <NavLink
-                                to="/dashboard/my-item"
-                                className={({ isActive }) =>
-                                    isActive
-                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
-                                        : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
-                                }
-                            >
-                                My Items
+                                My Cart
                             </NavLink>
                         ) : (
                             ""
@@ -143,7 +130,7 @@ const Header = () => {
                                             <ul className="flex flex-col p-2 my-2 space-y-1">
                                                 <li>
                                                     <Link
-                                                        to="/dashboard/admin/home"
+                                                        to="/dashboard"
                                                         className="block px-2 py-1 text-teal-600  transition rounded-md hover:bg-gray-100"
                                                     >
                                                         Dashboard Home
@@ -151,10 +138,10 @@ const Header = () => {
                                                 </li>
                                                 <li>
                                                     <Link
-                                                        to="dashboard/manage-inventory"
+                                                        to="dashboard/my-cart"
                                                         className="block px-2 py-1  text-teal-600 transition rounded-md hover:bg-gray-100"
                                                     >
-                                                        Manage Inventory
+                                                        My Cart
                                                     </Link>
                                                 </li>
                                             </ul>
