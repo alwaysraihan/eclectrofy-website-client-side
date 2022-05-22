@@ -7,9 +7,7 @@ const ManufacturerTools = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const { data } = await axios.get(
-                    `https://perfume-inventory-server.herokuapp.com/inventory-items`
-                );
+                const { data } = await axios.get(`http://localhost:5000/tools`);
                 setEnventoryItems(data);
             } catch (err) {
                 console.error(err);
@@ -41,7 +39,7 @@ const ManufacturerTools = () => {
                         <div key={item._id} className="w-full p-2 ">
                             <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
                                 <div
-                                    className="bg-gray-400 h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover"
+                                    className="bg-white h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-contain"
                                     style={{
                                         backgroundImage: `url(${item.img})`,
                                     }}
@@ -58,7 +56,7 @@ const ManufacturerTools = () => {
                                     </div>
 
                                     <div className="p-2 text-right">
-                                        <div className="text-teal-500 font-semibold text-center text-lg font-poppins">
+                                        <div className="text-teal-500 font-bold text-center text-lg font-poppins">
                                             ${item.price}
                                         </div>
 
@@ -71,15 +69,18 @@ const ManufacturerTools = () => {
                                 </div>
                                 <div className="flex px-4 justify-between items-center">
                                     <h1 className="text-gray-400 text-sm">
-                                        minimum order quantity: 5
+                                        Minimum order quantity:
+                                        {item.minimumQuntity}
                                     </h1>
                                     <h1>
                                         <span className="font-bold">
                                             Availability:{" "}
                                         </span>{" "}
                                         <span className="text-gray-500">
-                                            <span>{item.quantity}</span> in
-                                            stock
+                                            <span>
+                                                {item.availableQunatity}
+                                            </span>{" "}
+                                            in stock
                                         </span>
                                     </h1>
                                 </div>
@@ -87,7 +88,7 @@ const ManufacturerTools = () => {
                                     <div className="w-1/2 p-2">
                                         <Link
                                             to={`buy/${item._id}`}
-                                            className="block w-full bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
+                                            className="block w-full bg-yellow-500 hover:bg-yellow-600 text-white border-2 border-yellow-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                                         >
                                             Buy Now
                                         </Link>

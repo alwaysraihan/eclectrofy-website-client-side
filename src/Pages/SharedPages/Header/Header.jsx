@@ -39,7 +39,7 @@ const Header = () => {
                             to="/"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
+                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
                                     : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                             }
                         >
@@ -49,7 +49,7 @@ const Header = () => {
                             to="/about"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
+                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
                                     : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                             }
                         >
@@ -59,7 +59,7 @@ const Header = () => {
                             to="blogs"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
+                                    ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
                                     : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                             }
                         >
@@ -71,7 +71,7 @@ const Header = () => {
                                 to="/dashboard"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
+                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
                                         : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                                 }
                             >
@@ -83,10 +83,10 @@ const Header = () => {
 
                         {user ? (
                             <NavLink
-                                to="/dashboard/my-cart"
+                                to="/my-cart"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-teal-600"
+                                        ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
                                         : "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 "
                                 }
                             >
@@ -138,7 +138,7 @@ const Header = () => {
                                                 </li>
                                                 <li>
                                                     <Link
-                                                        to="dashboard/my-cart"
+                                                        to="/my-cart"
                                                         className="block px-2 py-1  text-teal-600 transition rounded-md hover:bg-gray-100"
                                                     >
                                                         My Cart
