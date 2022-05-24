@@ -6,7 +6,9 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <ManufacturerTools />
+            <div className="bg-gray-100">
+                <ManufacturerTools />
+            </div>
         </>
     );
 };

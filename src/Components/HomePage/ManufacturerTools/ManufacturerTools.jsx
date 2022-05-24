@@ -37,7 +37,7 @@ const ManufacturerTools = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-10 justify-center   px-[2%] md:px-[3%] lg:px-[4%] xl:px-[10%]">
                     {toolsData.map((item) => (
                         <div key={item._id} className="w-full p-2 ">
-                            <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
+                            <div className="shadow-lg hover:shadow-xl rounded-lg relative">
                                 <div
                                     className="bg-white h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-contain"
                                     style={{

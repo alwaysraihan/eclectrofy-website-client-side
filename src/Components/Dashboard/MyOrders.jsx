@@ -44,7 +44,7 @@ const MyOrders = () => {
                 <table className="table  w-full">
                     <thead>
                         <tr className="w-full">
-                            <th></th>
+                            <th className="table-cell"></th>
                             <th>Tools Name</th>
                             <th className="text-center hidden md:table-cell">
                                 Quantity
@@ -58,14 +58,18 @@ const MyOrders = () => {
                     <tbody>
                         {orders.map((order, index) => (
                             <tr key={order._id}>
-                                <td>{index + 1}</td>
+                                <td className="table-cell">{index + 1}</td>
                                 <td>
-                                    <p className="font-semibold">
+                                    <p className=" text-xs md:text-base font-bold">
                                         {order.productName}
                                     </p>
                                     <div className="md:hidden">
-                                        <p>Quantity: {order.quantity}</p>
-                                        <p>SubTotal: {order.subTotal}</p>
+                                        <p className="text-xs">
+                                            Quantity: {order.quantity}
+                                        </p>
+                                        <p className="text-xs ">
+                                            SubTotal: {order.subTotal}
+                                        </p>
                                     </div>
                                 </td>
                                 <td className="text-center hidden md:table-cell ">

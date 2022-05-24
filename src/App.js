@@ -10,6 +10,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/HomePage/Home/Home";
 import Purchase from "./Pages/MyCart/Purchase";
+import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
 
 function App() {
@@ -67,6 +68,9 @@ function App() {
                 </Route>
             </Routes>
             <ToastContainer />
+            <div className="bg-gray-800">
+                <Footer />
+            </div>
         </>
     );
 }

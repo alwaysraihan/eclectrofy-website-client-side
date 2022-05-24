@@ -79,7 +79,7 @@ const CheckoutForm = ({ order }) => {
         } else {
             setCardErr("");
             setTransId(paymentIntent.id);
-            console.log(paymentIntent);
+
             setOrderSuccess("Congrat your paymet is successfull.");
 
             // upadate payment info on the database
@@ -102,7 +102,7 @@ const CheckoutForm = ({ order }) => {
                 .then((data) => {
                     if (data?.acknowledged) {
                         console.log(data.acknowledged);
-                    } else {
+                        setPaymentProccesing(false);
                         toast.success(`${buyerName} Your order is Success.`);
                     }
                 });
@@ -129,7 +129,7 @@ const CheckoutForm = ({ order }) => {
                 />
                 <button
                     type="submit"
-                    disabled={!stripe || !clientSecret}
+                    disabled={!stripe || !clientSecret || orderSuccess}
                     className="btn h-16 w-full rounded-sm bg-indigo-600 tracking-wide font-semibold text-white"
                 >
                     Pay
