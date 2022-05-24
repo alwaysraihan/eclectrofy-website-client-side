@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 import Loading from "../../SharedPages/Loading/Loading";
 import auth from "../../../Firebase-Setup/firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
@@ -26,7 +27,7 @@ const Login = () => {
     const [signInWithGoogle, user1, loading1, error1] =
         useSignInWithGoogle(auth);
 
-    // const [token] = useToken(user || user1 || user2);
+    const [token] = useToken(user || user1);
     let errorText;
     let name, value;
     const getUserData = (e) => {
@@ -38,10 +39,7 @@ const Login = () => {
 
     // condition
 
-    if (user) {
-        navigate(from, { replace: true });
-    }
-    if (user1) {
+    if (token) {
         navigate(from, { replace: true });
     }
     if (loading || loading1) {

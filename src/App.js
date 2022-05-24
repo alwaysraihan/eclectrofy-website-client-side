@@ -7,6 +7,7 @@ import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/HomePage/Home/Home";
 import Purchase from "./Pages/MyCart/Purchase";
 import Header from "./Pages/SharedPages/Header/Header";
@@ -52,6 +53,14 @@ function App() {
                         element={
                             <RequireAuth>
                                 <AddReview />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="payment/:orderid"
+                        element={
+                            <RequireAuth>
+                                <Payment />
                             </RequireAuth>
                         }
                     />

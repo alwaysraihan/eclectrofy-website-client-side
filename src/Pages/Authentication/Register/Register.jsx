@@ -8,6 +8,7 @@ import {
 import { toast } from "react-toastify";
 import Loading from "../../SharedPages/Loading/Loading";
 import auth from "../../../Firebase-Setup/firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
@@ -27,7 +28,7 @@ const Register = () => {
 
     let errorText;
     let name, value;
-    //   const [token] = useToken(user || user1 || user2);
+    const [token] = useToken(user || user1);
     const getUserData = (e) => {
         name = e.target.name;
         value = e.target.value;
@@ -36,12 +37,10 @@ const Register = () => {
     };
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    // if (token) {
-    //     navigate(from, { replace: true });
-    // }
-    if (user || user1) {
+    if (token) {
         navigate(from, { replace: true });
     }
+
     if (loading || loading1) {
         return <Loading></Loading>;
     }
