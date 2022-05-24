@@ -40,27 +40,58 @@ const MyOrders = () => {
     }, [navigate, user]);
     return (
         <>
-            <div className="overflow-x-auto px-5">
-                <table className="table w-full">
+            <div className="overflow-x-auto md:px-5">
+                <table className="table  w-full">
                     <thead>
-                        <tr>
+                        <tr className="w-full">
                             <th></th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Sub-Total</th>
-                            <th>Payment</th>
+                            <th>Tools Name</th>
+                            <th className="text-center hidden md:table-cell">
+                                Quantity
+                            </th>
+                            <th className="text-center  hidden md:table-cell">
+                                Sub-Total
+                            </th>
+                            <th className="text-center">Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {orders.map((order, index) => (
                             <tr key={order._id}>
-                                <th>{index + 1}</th>
-                                <td>{order.productName}</td>
-                                <td>{order.quantity}</td>
-                                <td>{order.subTotal}</td>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <p className="font-semibold">
+                                        {order.productName}
+                                    </p>
+                                    <div className="md:hidden">
+                                        <p>Quantity: {order.quantity}</p>
+                                        <p>SubTotal: {order.subTotal}</p>
+                                    </div>
+                                </td>
+                                <td className="text-center hidden md:table-cell ">
+                                    {order.quantity}
+                                </td>
+                                <td className="text-center hidden md:table-cell">
+                                    {order.subTotal}
+                                </td>
 
-                                {order.subTotal && !order.paid && (
-                                    <td>
+                                <td className="text-center">
+                                    {order.subTotal && order.paid ? (
+                                        <div>
+                                            <p>
+                                                <span className="text-success">
+                                                    Paid
+                                                </span>
+                                            </p>
+
+                                            <p>
+                                                <span className="text-success hidden lg:block">
+                                                    Transaction ID
+                                                    {order.transactionId}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    ) : (
                                         <Link
                                             to={`/dashboard/payment/${order._id}`}
                                         >
@@ -68,16 +99,8 @@ const MyOrders = () => {
                                                 Pay Now
                                             </button>
                                         </Link>
-                                    </td>
-                                )}
-
-                                {order.subTotal && order.paid && (
-                                    <td>
-                                        <span className="text-success">
-                                            Paid
-                                        </span>
-                                    </td>
-                                )}
+                                    )}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
