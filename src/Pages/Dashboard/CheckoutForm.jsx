@@ -1,10 +1,50 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useState } from "react";
+import { signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../Firebase-Setup/firebase.init";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ order }) => {
+    const location = useLocation();
+    const [verifiedUser, setVerifedUser] = useState(true);
+    const [clientSecret, setClientSecret] = useState("");
+    const handleSignOut = () => {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+    };
+
+    const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
-    const [cardErr, setCardErr] = useState();
+    const [cardErr, setCardErr] = useState("");
+    const [orderSuccess, setOrderSuccess] = useState("");
+    const [paymentProccessing, setPaymentProccesing] = useState(false);
+    const [transId, setTransId] = useState("");
+    const { subTotal, buyerName, buyerEmail, _id } = order;
+    useEffect(() => {
+        fetch("http://localhost:5000/create-payment-intent", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify({ subTotal }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data?.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                } else {
+                    setVerifedUser(false);
+                }
+            });
+    }, [navigate, order, setVerifedUser, subTotal]);
+    if (verifiedUser === false) {
+        handleSignOut();
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {
@@ -20,6 +60,53 @@ const CheckoutForm = () => {
         });
 
         setCardErr(error?.message || "");
+        setOrderSuccess("");
+        setPaymentProccesing(true);
+        // confirem order payment
+        const { paymentIntent, error: intentError } =
+            await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: `${buyerName}`,
+                        email: `${buyerEmail}`,
+                    },
+                },
+            });
+        if (intentError) {
+            setCardErr(intentError?.message);
+            setPaymentProccesing(false);
+        } else {
+            setCardErr("");
+            setTransId(paymentIntent.id);
+            console.log(paymentIntent);
+            setOrderSuccess("Congrat your paymet is successfull.");
+
+            // upadate payment info on the database
+
+            const paymet = {
+                orderId: _id,
+                transactionId: paymentIntent.id,
+            };
+            fetch(`http://localhost:5000/order/${_id}`, {
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
+                body: JSON.stringify(paymet),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data?.acknowledged) {
+                        console.log(data.acknowledged);
+                    } else {
+                        toast.success(`${buyerName} Your order is Success.`);
+                    }
+                });
+        }
     };
     return (
         <>
@@ -42,13 +129,23 @@ const CheckoutForm = () => {
                 />
                 <button
                     type="submit"
-                    disabled={!stripe}
-                    className="h-16 w-full rounded-sm bg-indigo-600 tracking-wide font-semibold text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-600"
+                    disabled={!stripe || !clientSecret}
+                    className="btn h-16 w-full rounded-sm bg-indigo-600 tracking-wide font-semibold text-white"
                 >
                     Pay
                 </button>
             </form>
             <p className="text-warning">{cardErr}</p>
+            {paymentProccessing && (
+                <p className="text-center text-blue-500">Loading....</p>
+            )}
+            {orderSuccess && <p className="text-green-500">{orderSuccess}</p>}
+            {transId && (
+                <p className="text-green-500">
+                    Your transaction Id:{" "}
+                    <span className="text-orange-400">{transId}</span>
+                </p>
+            )}
         </>
     );
 };
