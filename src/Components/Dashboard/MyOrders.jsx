@@ -12,7 +12,7 @@ import OrderDeleteModal from "./OrderDeleteModal";
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
-    const [order, setOrder] = useState(null);
+    const [orderData, setOrderData] = useState(null);
     const handleSignOut = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -42,7 +42,7 @@ const MyOrders = () => {
             }
         };
         loadData();
-    }, [navigate, user, order]);
+    }, [navigate, user, orderData]);
 
     return (
         <>
@@ -58,7 +58,7 @@ const MyOrders = () => {
                             <th className="text-center  hidden md:table-cell">
                                 Sub-Total
                             </th>
-                            <th className="text-center ">Cancel</th>
+                            <th className="text-center ">Status</th>
                             <th className="text-center">Payment</th>
                         </tr>
                     </thead>
@@ -86,13 +86,19 @@ const MyOrders = () => {
                                     {order.subTotal}
                                 </td>
                                 <td className="text-center">
-                                    <label
-                                        onClick={() => setOrder(order)}
-                                        htmlFor="order-delete"
-                                        className="btn btn-xs btn-warning"
-                                    >
-                                        cancel
-                                    </label>
+                                    {order.paid ? (
+                                        <span className="btn btn-xs btn-warning">
+                                            Pandeing
+                                        </span>
+                                    ) : (
+                                        <label
+                                            onClick={() => setOrderData(order)}
+                                            htmlFor="order-delete"
+                                            className="btn btn-xs btn-warning"
+                                        >
+                                            cancel Order
+                                        </label>
+                                    )}
                                 </td>
 
                                 <td className="text-center">
@@ -126,7 +132,12 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
-            {order && <OrderDeleteModal setOrder={setOrder} order={order} />}
+            {orderData && (
+                <OrderDeleteModal
+                    setOrderData={setOrderData}
+                    orderData={orderData}
+                />
+            )}
         </>
     );
 };

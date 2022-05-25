@@ -2,10 +2,9 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axiosSecret from "../../axiosSecret/axiosSecret";
 import auth from "../../Firebase-Setup/firebase.init";
 
-const OrderDeleteModal = ({ setOrder, order }) => {
+const OrderDeleteModal = ({ setOrderData, orderData }) => {
     const handleSignOut = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -30,10 +29,10 @@ const OrderDeleteModal = ({ setOrder, order }) => {
             .then((data) => {
                 if (data.deletedCount > 0) {
                     toast.success("Your order is Deleted.");
-                    setOrder(null);
+                    setOrderData(null);
                 } else {
                     toast.error("Try Again. Something Went Wrong!");
-                    setOrder(null);
+                    setOrderData(null);
                 }
             });
     };
@@ -44,7 +43,9 @@ const OrderDeleteModal = ({ setOrder, order }) => {
                 <div className="modal-box relative">
                     <h1 className=" text-xs md:text-sm font-semibold text-gray-600 ">
                         Product Name:{" "}
-                        <span className="font-bold">{order?.productName}</span>
+                        <span className="font-bold">
+                            {orderData?.productName}
+                        </span>
                     </h1>
                     <h1 className="text-sm md:text-xl font-bold">
                         Are you sure? You want to Delete the Order ?
@@ -52,13 +53,13 @@ const OrderDeleteModal = ({ setOrder, order }) => {
 
                     <div className="flex gap-5 justify-end mt-5">
                         <button
-                            onClick={() => setOrder(null)}
+                            onClick={() => setOrderData(null)}
                             className="btn btn-accent text-white"
                         >
                             Cancel
                         </button>
                         <button
-                            onClick={() => handleDeletOrder(order._id)}
+                            onClick={() => handleDeletOrder(orderData._id)}
                             className="btn btn-warning bg-red-500 text-white"
                         >
                             Delete
