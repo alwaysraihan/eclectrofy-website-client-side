@@ -42,7 +42,7 @@ const MyOrders = () => {
             }
         };
         loadData();
-    }, [navigate, user]);
+    }, [navigate, user, order]);
 
     return (
         <>
@@ -126,12 +126,7 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
-            {order && (
-                <OrderDeleteModal
-                    setOrder={setOrder}
-                    order={order}
-                />
-            )}
+            {order && <OrderDeleteModal setOrder={setOrder} order={order} />}
         </>
     );
 };
