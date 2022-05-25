@@ -62,7 +62,7 @@ const Footer = () => {
                                     placeholder="username@site.com"
                                     class="input  text-gray-800 input-bordered w-full pr-16"
                                 />
-                                <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">
+                                <button class="btn btn-accent absolute top-0 right-0 rounded-l-none">
                                     Subscribe
                                 </button>
                             </div>
