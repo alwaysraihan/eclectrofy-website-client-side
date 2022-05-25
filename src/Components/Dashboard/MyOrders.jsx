@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 import axiosSecret from "../../axiosSecret/axiosSecret";
 import auth from "../../Firebase-Setup/firebase.init";
 import { signOut } from "firebase/auth";
+import axios from "axios";
+import { toast } from "react-toastify";
+import OrderDeleteModal from "./OrderDeleteModal";
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
+    const [order, setOrder] = useState(null);
     const handleSignOut = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
     };
     const navigate = useNavigate();
+
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -38,6 +43,7 @@ const MyOrders = () => {
         };
         loadData();
     }, [navigate, user]);
+
     return (
         <>
             <div className="overflow-x-auto md:px-5">
@@ -52,6 +58,7 @@ const MyOrders = () => {
                             <th className="text-center  hidden md:table-cell">
                                 Sub-Total
                             </th>
+                            <th className="text-center ">Cancel</th>
                             <th className="text-center">Payment</th>
                         </tr>
                     </thead>
@@ -77,6 +84,15 @@ const MyOrders = () => {
                                 </td>
                                 <td className="text-center hidden md:table-cell">
                                     {order.subTotal}
+                                </td>
+                                <td className="text-center">
+                                    <label
+                                        onClick={() => setOrder(order)}
+                                        htmlFor="order-delete"
+                                        className="btn btn-xs btn-warning"
+                                    >
+                                        cancel
+                                    </label>
                                 </td>
 
                                 <td className="text-center">
@@ -110,6 +126,12 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
+            {order && (
+                <OrderDeleteModal
+                    setOrder={setOrder}
+                    order={order}
+                />
+            )}
         </>
     );
 };

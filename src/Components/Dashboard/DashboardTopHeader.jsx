@@ -9,6 +9,7 @@ const DashboardTopHeader = () => {
 
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem("accessToken");
     };
     useEffect(() => {
         window.scrollTo(0, 0);

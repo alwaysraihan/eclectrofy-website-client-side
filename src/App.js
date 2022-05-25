@@ -2,6 +2,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AddProduct from "./Components/Dashboard/AddProduct";
 import AddReview from "./Components/Dashboard/AddReview";
+import MakeAdmin from "./Components/Dashboard/MakeAdmin";
+import MangeProduct from "./Components/Dashboard/MangeProduct";
 import ManggeOrders from "./Components/Dashboard/ManggeOrders";
 import MyOrders from "./Components/Dashboard/MyOrders";
 import MyProfile from "./Components/Dashboard/MyProfile";
@@ -9,8 +11,7 @@ import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
-import MangeProduct from "./Pages/Dashboard/MangeProduct";
+
 import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/HomePage/Home/Home";
 import Purchase from "./Pages/MyCart/Purchase";
