@@ -9,16 +9,16 @@ const Footer = () => {
                     <div>
                         <span className="footer-title">Services</span>
                         <Link to="/" className="link link-hover">
-                            Branding
+                            Product
                         </Link>
                         <Link to="/" className="link link-hover">
-                            Design
+                            Tools
                         </Link>
                         <Link to="/" className="link link-hover">
-                            Marketing
+                            Employer
                         </Link>
                         <Link to="/" className="link link-hover">
-                            Advertisement
+                            Custom Tools
                         </Link>
                     </div>
                     <div>

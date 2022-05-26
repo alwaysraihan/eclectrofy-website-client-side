@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import axiosSecret from "../../axiosSecret/axiosSecret";
 import auth from "../../Firebase-Setup/firebase.init";
 import { signOut } from "firebase/auth";
-import axios from "axios";
-import { toast } from "react-toastify";
+
 import OrderDeleteModal from "./OrderDeleteModal";
+import LoadingBig from "../Loading/LoadignBig";
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
@@ -43,10 +43,16 @@ const MyOrders = () => {
         };
         loadData();
     }, [navigate, user, orderData]);
-
+    if (orders.length === 0) {
+        return (
+            <div className=" px-5 mt-10">
+                <LoadingBig />;
+            </div>
+        );
+    }
     return (
         <>
-            <div className="overflow-x-auto md:px-5">
+            <div className="my-5 overflow-x-auto md:px-5">
                 <table className="table  w-full">
                     <thead>
                         <tr className="w-full">

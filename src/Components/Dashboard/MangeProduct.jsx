@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
-import axiosSecret from "../../axiosSecret/axiosSecret";
+import LoadingData from "../Loading/LoadingData";
 
 const MangeProduct = () => {
     const {
@@ -18,7 +18,11 @@ const MangeProduct = () => {
     );
 
     if (isLoading) {
-        return <p className="text-center text-blue-500">Loding....</p>;
+        return (
+            <div className=" mt-10">
+                <LoadingData />;
+            </div>
+        );
     }
 
     const deleteItem = async (id) => {

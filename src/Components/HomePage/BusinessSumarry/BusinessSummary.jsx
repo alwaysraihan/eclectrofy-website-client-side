@@ -58,8 +58,7 @@ const BusinessSummary = () => {
                             ></line>
                         </svg>
                         <p className="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
-                            Save time managing advertising &amp; Content for
-                            your business.
+                            Best Mobile Repairng Manufacturers
                         </p>
                     </div>
                     {/* <!-- End heading --> */}

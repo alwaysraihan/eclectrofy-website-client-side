@@ -11,8 +11,8 @@ const Banner = () => {
                     <h1>Mobile Repairing Tools</h1>
                     <p className="search-text">
                         {" "}
-                        Search the largest selection of luxury high-rise
-                        apartments, multi-family homes, and luxury homes.{" "}
+                        Best Mobile Tools Manufacturers All Over The World.
+                        Every Product Made With Best Quality.{" "}
                     </p>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import LoadingData from "../Loading/LoadingData";
 
 const ManggeOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -273,9 +274,9 @@ const ManggeOrders = () => {
                             className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
                             role="status"
                         ></div>
-                        <h2 className="text-center text-blue-500 text-xl font-semibold">
-                            Loading...
-                        </h2>
+                        <div className=" mt-10">
+                            <LoadingData />;
+                        </div>
                     </div>
                 ) : (
                     ""

@@ -26,7 +26,7 @@ const AddReview = () => {
         };
 
         axios
-            .post("http://localhost:5000/rivews", rivew, {
+            .post("https://elctrofy.herokuapp.com/rivews", rivew, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem(

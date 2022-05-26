@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import LoadingData from "../Loading/LoadingData";
 import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
@@ -19,9 +20,12 @@ const MakeAdmin = () => {
     );
 
     if (isLoading) {
-        return <p className="text-center text-blue-500">Loding....</p>;
+        return (
+            <div className=" mt-10">
+                <LoadingData />;
+            </div>
+        );
     }
-    console.log(users);
 
     return (
         <>
