@@ -31,17 +31,17 @@ const Review = () => {
     return (
         <>
             <div className="py-28">
-                <div className="mt-10  container mx-auto flex flex-col md:flex-row shadow-lg overflow-hidden ">
-                    <div className=" w-[100%] relative  py-2 md:py-24 bg-indigo-700 md:w-1/2 flex flex-col item-center justify-center">
+                <div className="mt-10  container mx-auto bg-white flex flex-col md:flex-row shadow-lg overflow-hidden ">
+                    <div className=" w-[100%] relative hidden  py-2 md:py-24 bg-indigo-700 md:w-1/2 lg:flex flex-col item-center justify-center">
                         <div className="absolute top-0 left-0 z-10 grid-indigo w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
 
-                        <div className="relative text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
+                        <div className="relative  text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
                             <span className="md:block">What Our</span>
                             <span className="md-block">Customers</span>
                             <span className="block">Are Saying!</span>
                         </div>
                     </div>
-                    <div className="md:w-[50%]">
+                    <div className="w-[100%] px-5 lg:px-0 lg:w-[50%]">
                         <Swiper
                             modules={[Navigation, Pagination, Autoplay]}
                             spaceBetween={30}
@@ -61,7 +61,7 @@ const Review = () => {
                         >
                             {rivews.map((rivew) => (
                                 <SwiperSlide key={rivew._id}>
-                                    <div className="bg-white">
+                                    <div className="bg-white min-h-full">
                                         <div className="flex flex-col h-full relative">
                                             <div className="absolute top-0 left-0 mt-3 ml-4 md:mt-5 md:ml-12">
                                                 <svg
@@ -84,28 +84,21 @@ const Review = () => {
                                             <div className="flex my-4 justify-center items-center"></div>
 
                                             <div className="flex justify-center px-6 pt-2 pb-6 md:py-6">
-                                                <div
-                                                    className="text-center"
-                                                    x-show="testimonialActive == 1"
-                                                >
-                                                    <h2 className="text-sm md:text-base font-bold text-gray-700 leading-tight">
+                                                <div className="text-center">
+                                                    <h2 className="text-sm md:text-base text-center font-bold text-gray-700 leading-tight">
                                                         {rivew?.name}
                                                     </h2>
                                                 </div>
 
-                                                <div
-                                                    className="text-center"
-                                                    x-show="testimonialActive == 2"
-                                                ></div>
-
                                                 <div className="text-center">
                                                     <h2 className="text-sm md:text-base font-bold text-gray-700 leading-tight">
-                                                        Rivew Give {rivew?.rate}{" "}
-                                                        Star
+                                                        Rivew Gives{" "}
+                                                        {rivew?.rate} Star
                                                     </h2>
                                                     <small className="text-gray-500 text-xs md:text-sm text-center">
-                                                        Product Manager, Fake
-                                                        Corp.
+                                                        {rivew?.ceo
+                                                            ? rivew.ceo
+                                                            : "Product Manager, Fake Corp."}
                                                     </small>
                                                 </div>
                                             </div>

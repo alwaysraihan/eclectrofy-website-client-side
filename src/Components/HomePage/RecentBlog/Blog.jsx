@@ -19,7 +19,7 @@ const Blog = () => {
                             <a href="/">
                                 <img
                                     class="w-full"
-                                    src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                    src="https://media.istockphoto.com/photos/technician-carefully-examines-the-integrity-of-the-internal-elements-picture-id1189142091?k=20&m=1189142091&s=612x612&w=0&h=NoWDtr8e5PwQ_SsI8GTDyUKpzMMkreOxfn4EWOW-xeQ="
                                     alt="Sunset in the mountains"
                                 />
                             </a>
@@ -29,25 +29,25 @@ const Blog = () => {
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Cooking
+                                        Mobile Repaing
                                     </a>
                                     ,{" "}
                                     <a
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Recipe
+                                        guide
                                     </a>
                                 </div>
                                 <a
                                     href="/"
                                     class="font-medium text-lg hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
                                 >
-                                    Simplest Salad Recipe ever
+                                    Simplest way ever
                                 </a>
                                 <p class="text-gray-500 text-sm">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
+                                    Easily Repair any mobile phone. First of all
+                                    you need know what is the problem.
                                 </p>
                             </div>
                             <div class="flex items-center px-6 pb-4">
@@ -73,7 +73,7 @@ const Blog = () => {
                             <a href="/">
                                 <img
                                     class="w-full"
-                                    src="https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                    src="https://media.istockphoto.com/photos/repairman-disassembling-phone-with-screwdriver-picture-id831986696?k=20&m=831986696&s=612x612&w=0&h=jPuce3QxuAO6bdYIQLZ9kSZOnDmyk1xEMZOGeYckCNY="
                                     alt="Sunset in the mountains"
                                 />
                             </a>
@@ -83,25 +83,25 @@ const Blog = () => {
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Cooking
+                                        Disply Repairng
                                     </a>
                                     ,{" "}
                                     <a
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Recipe
+                                        Smartphone
                                     </a>
                                 </div>
                                 <a
                                     href="/"
                                     class="font-medium text-lg  hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 capitalize"
                                 >
-                                    Salad Ideas of asian chefs
+                                    Without Damage
                                 </a>
                                 <p class="text-gray-500 text-sm">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
+                                    Display reparing is one of the ticky work
+                                    for you. Here have an simple ticks.
                                 </p>
                             </div>
                             <div class="flex items-center px-6 pb-4">
@@ -127,7 +127,7 @@ const Blog = () => {
                             <a href="/">
                                 <img
                                     class="w-full"
-                                    src="https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                    src="https://us.123rf.com/450wm/milkos/milkos1710/milkos171001446/87665844-repairing-smartphone-with-multimeter-close-up-technician-pov-broken-phone-diagnostics-at-service-cen.jpg?ver=6"
                                     alt="Sunset in the mountains"
                                 />
                             </a>
@@ -137,25 +137,25 @@ const Blog = () => {
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Cooking
+                                        Solering
                                     </a>
                                     ,{" "}
                                     <a
                                         href="/"
                                         class="text-xs text-indigo-600 transition duration-500 ease-in-out"
                                     >
-                                        Recipe
+                                        speaker
                                     </a>
                                 </div>
                                 <a
                                     href="/"
                                     class="font-medium text-lg  hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
                                 >
-                                    Best Pizza in Town
+                                    Solring Ticks
                                 </a>
                                 <p class="text-gray-500 text-sm">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
+                                    Soldering Diplay is disgusting. No problem
+                                    you can fixed it eaisyly
                                 </p>
                             </div>
                             <div class="flex items-center px-6 pb-4">

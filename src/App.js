@@ -22,6 +22,7 @@ import Purchase from "./Pages/MyCart/Purchase";
 import Protfolio from "./Pages/Protfolio/Protfolio";
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
+import PageNotFound from "./Pages/SharedPages/PageNotFound/PageNotFound";
 
 function App() {
     const [user, loading] = useAuthState(auth);
@@ -118,7 +119,9 @@ function App() {
                                     </RequireAuth>
                                 }
                             />
+                            <Route path="*" element={<PageNotFound />} />
                         </Route>
+                        <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 )}
             </div>

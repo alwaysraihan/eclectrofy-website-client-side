@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import auth from "../../Firebase-Setup/firebase.init";
+import LoadingData from "../Loading/LoadingData";
+import EditMyProfile from "./EditMyProfile";
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
-    console.log(user);
+    const [edit, setEdit] = useState(null);
+    const { data, isLoading, refetch } = useQuery("users", () =>
+        fetch(`https://elctrofy.herokuapp.com/my-profile?email=${user.email}`, {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        }).then((res) => res.json())
+    );
+
+    if (isLoading) {
+        return (
+            <div className=" mt-10">
+                <LoadingData />;
+            </div>
+        );
+    }
+    const ProfileData = data[0];
+    console.log(ProfileData);
     return (
         <>
             <div className="container mx-auto my-5 p-5">
@@ -88,41 +110,49 @@ const MyProfile = () => {
                                             {user.displayName}
                                         </div>
                                     </div>
-                                    {/* <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">
-                                            Last Name
-                                        </div>
-                                        <div className="px-4 py-2">Doe</div>
-                                    </div> */}
-                                    <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">
-                                            Gender
-                                        </div>
-                                        <div className="px-4 py-2">Female</div>
-                                    </div>
+
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
                                             Contact No.
                                         </div>
-                                        <div className="px-4 py-2">
-                                            +11 998001001
-                                        </div>
+                                        {ProfileData?.phone && (
+                                            <div className="px-4 py-2">
+                                                {ProfileData.phone}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
-                                            Current Address
+                                            Address
                                         </div>
-                                        <div className="px-4 py-2">
-                                            Beech Creek, PA, Pennsylvania
-                                        </div>
+                                        {ProfileData.address && (
+                                            <div className="px-4 py-2">
+                                                {ProfileData.address}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        <div className="px-4 py-2 font-semibold">
-                                            Permanant Address
-                                        </div>
-                                        <div className="px-4 py-2">
-                                            Arlington Heights, IL, Illinois
-                                        </div>
+                                        {ProfileData.linkedin ? (
+                                            <div className="px-4 py-2 font-semibold">
+                                                <a
+                                                    className="text-blue-500"
+                                                    href={`${ProfileData.linkedin}`}
+                                                >
+                                                    Linkedin
+                                                </a>
+                                            </div>
+                                        ) : (
+                                            <div
+                                                onClick={() =>
+                                                    toast.warning(
+                                                        "You did not add Linkedin!"
+                                                    )
+                                                }
+                                                className="px-4  cursor-pointer py-2 font-semibold"
+                                            >
+                                                Linkedin
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
@@ -131,7 +161,7 @@ const MyProfile = () => {
                                         <div className="px-4 py-2">
                                             <a
                                                 className="text-blue-800"
-                                                href="mailto:jane@example.com"
+                                                href={`mailto:${user.email}`}
                                             >
                                                 {user.email}
                                             </a>
@@ -139,23 +169,40 @@ const MyProfile = () => {
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
-                                            Birthday
+                                            Education
                                         </div>
                                         <div className="px-4 py-2">
-                                            Feb 06, 1998
+                                            {ProfileData?.education && (
+                                                <a
+                                                    className="text-blue-800"
+                                                    href={`mailto:${user.email}`}
+                                                >
+                                                    {ProfileData.education}
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex justify-end">
-                                <button className="block   bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
+                                <button
+                                    onClick={() => setEdit({ edit: true })}
+                                    className="block   bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
+                                >
                                     Edit
                                 </button>
                             </div>
                         </div>
                         {/* <!-- End of about section --> */}
 
-                        <div className="my-4"></div>
+                        <div className="my-4">
+                            {edit && (
+                                <EditMyProfile
+                                    refetch={refetch}
+                                    setEdit={setEdit}
+                                />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
