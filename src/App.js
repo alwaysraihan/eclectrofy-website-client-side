@@ -10,6 +10,7 @@ import MyProfile from "./Components/Dashboard/MyProfile";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import Login from "./Pages/Authentication/Login/Login";
 import Register from "./Pages/Authentication/Register/Register";
+import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
 import Payment from "./Pages/Dashboard/Payment";
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/blogs" element={<Blogs />} />
                 <Route path="/purchase/:id" element={<Purchase />} />
                 <Route
                     path="/dashboard"

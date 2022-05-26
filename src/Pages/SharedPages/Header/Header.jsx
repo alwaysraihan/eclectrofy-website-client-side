@@ -57,7 +57,7 @@ const Header = () => {
                             My Portfolio
                         </NavLink>
                         <NavLink
-                            to="blogs"
+                            to="/blogs"
                             className={({ isActive }) =>
                                 isActive
                                     ? "p-2 lg:px-4 md:mx-2 text-white rounded hover:bg-gray-200 hover:text-gray-500 bg-yellow-500"
