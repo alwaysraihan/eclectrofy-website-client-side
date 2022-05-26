@@ -47,7 +47,7 @@ const Purchase = () => {
         const loadData = async () => {
             try {
                 const { data } = await axiosSecret.get(
-                    `http://localhost:5000/tools/${id}`
+                    `https://elctrofy.herokuapp.com/tools/${id}`
                 );
 
                 setToolData(data);

@@ -138,6 +138,11 @@ const Protfolio = () => {
                                 <h4 class="font-medium text-green text-2xl">
                                     Perfume Warehouse
                                 </h4>
+                                <h4 class="font-medium text-white text-xl text-right">
+                                    <a href="https://perfume-warehouse-e8a74.web.app/">
+                                        Live Site
+                                    </a>
+                                </h4>
                                 <ul class="text-white list-disc list-inside">
                                     <li>
                                         A MERN stack Inventory management
@@ -155,11 +160,13 @@ const Protfolio = () => {
                                 <h4 class="font-medium text-green text-2xl">
                                     Recoatch
                                 </h4>
+                                <h4 class="font-medium text-white text-xl text-right">
+                                    <a href="https://health-coatch.web.app/">
+                                        Live Site
+                                    </a>
+                                </h4>
                                 <ul class="text-white list-disc list-inside">
-                                    <li>
-                                        A MERN stack Inventory management
-                                        software.
-                                    </li>
+                                    <li>A</li>
                                     <li>
                                         Dashboard managing functionality added
                                         for dealers
@@ -170,6 +177,11 @@ const Protfolio = () => {
                             <div class="mt-8">
                                 <h4 class="font-medium text-green text-2xl">
                                     Elctrofy
+                                </h4>
+                                <h4 class="font-medium text-white text-xl text-right">
+                                    <a href="https://best-manufacturer.web.app/g">
+                                        Live Site
+                                    </a>
                                 </h4>
                                 <ul class="text-white list-disc list-inside">
                                     <li>

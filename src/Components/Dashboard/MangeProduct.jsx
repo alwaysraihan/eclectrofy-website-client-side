@@ -9,7 +9,7 @@ const MangeProduct = () => {
         isLoading,
         refetch,
     } = useQuery("mangeTools", () =>
-        fetch("http://localhost:5000/tools", {
+        fetch("https://elctrofy.herokuapp.com/tools", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,7 +24,7 @@ const MangeProduct = () => {
     const deleteItem = async (id) => {
         const sure = window.confirm("Are you sure? You want to delete!");
         if (sure) {
-            const url = `http://localhost:5000/tools/${id}`;
+            const url = `https://elctrofy.herokuapp.com/tools/${id}`;
 
             axios
                 .delete(url, {

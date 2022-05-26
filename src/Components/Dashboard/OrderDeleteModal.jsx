@@ -11,7 +11,7 @@ const OrderDeleteModal = ({ setOrderData, orderData }) => {
     };
     const navigate = useNavigate();
     const handleDeletOrder = async (id) => {
-        const url = `http://localhost:5000/order/${id}`;
+        const url = `https://elctrofy.herokuapp.com/order/${id}`;
 
         fetch(url, {
             method: "DELETE",

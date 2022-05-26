@@ -25,7 +25,7 @@ const MyOrders = () => {
         const loadData = async () => {
             try {
                 const { data } = await axiosSecret.get(
-                    `http://localhost:5000/order?email=${user.email}`
+                    `https://elctrofy.herokuapp.com/order?email=${user.email}`
                 );
 
                 setOrders(data);

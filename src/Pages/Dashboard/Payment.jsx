@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
     const { orderid } = useParams();
 
-    const url = `http://localhost:5000/order/${orderid}`;
+    const url = `https://elctrofy.herokuapp.com/order/${orderid}`;
     const {
         data: order,
         isLoading,

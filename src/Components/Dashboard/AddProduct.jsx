@@ -45,7 +45,7 @@ const AddProduct = () => {
                     // send to your database
 
                     axios
-                        .post("http://localhost:5000/tools", product, {
+                        .post("https://elctrofy.herokuapp.com/tools", product, {
                             headers: {
                                 "content-type": "application/json",
                                 authorization: `Bearer ${localStorage.getItem(

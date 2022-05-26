@@ -17,7 +17,7 @@ const Review = () => {
         isLoading,
         refetch,
     } = useQuery("rivew", () =>
-        fetch("http://localhost:5000/rivews", {
+        fetch("https://elctrofy.herokuapp.com/rivews", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,

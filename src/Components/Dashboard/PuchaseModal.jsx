@@ -24,7 +24,7 @@ const PurchaseModal = ({
             buyerAddress: event.target.address.value,
             phone: event.target.phone.value,
         };
-        fetch("http://localhost:5000/order", {
+        fetch("https://elctrofy.herokuapp.com/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -9,7 +9,7 @@ const ManggeOrders = () => {
         const loadData = async () => {
             try {
                 const { data } = await axios.get(
-                    "http://localhost:5000/all-orders"
+                    "https://elctrofy.herokuapp.com/all-orders"
                 );
                 setOrders(data);
             } catch (err) {

@@ -7,7 +7,9 @@ const ManufacturerTools = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/tools`);
+                const { data } = await axios.get(
+                    `https://elctrofy.herokuapp.com/tools`
+                );
                 setToolsData(data);
             } catch (err) {
                 console.error(err);
