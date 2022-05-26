@@ -207,7 +207,7 @@ const AddProduct = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
+                                    <div className="md:flex-1 mt-2 mb:mt-0">
                                         <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
                                             Product Description
                                         </label>
