@@ -166,7 +166,10 @@ const Protfolio = () => {
                                     </a>
                                 </h4>
                                 <ul class="text-white list-disc list-inside">
-                                    <li>A</li>
+                                    <li>
+                                        {" "}
+                                        Website for Individul service provider.
+                                    </li>
                                     <li>
                                         Dashboard managing functionality added
                                         for dealers

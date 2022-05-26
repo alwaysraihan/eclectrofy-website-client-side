@@ -21,11 +21,11 @@ const Blogs = () => {
                 application?
             </h1>
             <p className="text-xl">
-                The main difference between sql and nosql database is tahat, SQl
-                is a relational database and nosql is a nor-relational database.
-                SQL databases are table-based, while NoSQL databases are
-                document based, SQL databases are better for multi-row data,
-                while NoSQL is better for unstructured data like JSON.
+                There are many different ways to manage react state. First of
+                all state is an object that holds information about a specific
+                component. Bassically in the React state we mostly use Local
+                state, Gloval state , Server State , Url state etc. For example
+                We use useState and it's Local state.
             </p>
             {/* Question-3  */}
             <h1 className="text-4xl mt-5 mb-3">
@@ -34,13 +34,11 @@ const Blogs = () => {
                 do not set products = [...] instead, you use the setProducts
             </h1>
             <p className="text-xl">
-                Basically Json Web Token(jwt) used for security purpose between
-                two parties — a client and a server. JSON Web Token (JWT) is an
-                open standard that defines a compact and self-contained way for
-                securely transmitting information between parties as a JSON
-                object. If we use JWT then our api data will be accesable for
-                varified user . Without verify user can not able to acces data
-                form api or sever side.
+                I never set the state directly becaouse of, If I set the state
+                dircetly I can not update or replace when makes any changes. For
+                example, I call the server side api and If I set the state
+                directly I won't be able to set my api data in the state. For
+                the following reasons i nvevr set the state dircetly.
             </p>
             {/* Question-4  */}
             <h1 className="text-4xl mt-5 mb-3">
@@ -49,26 +47,25 @@ const Blogs = () => {
                 products by name?
             </h1>
             <p className="text-xl">
-                Basically Json Web Token(jwt) used for security purpose between
-                two parties — a client and a server. JSON Web Token (JWT) is an
-                open standard that defines a compact and self-contained way for
-                securely transmitting information between parties as a JSON
-                object. If we use JWT then our api data will be accesable for
-                varified user . Without verify user can not able to acces data
-                form api or sever side.
+                I will create an api on the server side. This api will get
+                search text by the query and fillter data from database. If any
+                data findout by the query than data will send as a response. And
+                From the client side when user search anythin and enter I will
+                call the api with search query and if get any data from the api
+                data will be show in the client side.
             </p>
             {/* Question-4  */}
             <h1 className="text-4xl mt-5 mb-3">
                 What is a unit test? Why should write unit tests?
             </h1>
             <p className="text-xl">
-                Basically Json Web Token(jwt) used for security purpose between
-                two parties — a client and a server. JSON Web Token (JWT) is an
-                open standard that defines a compact and self-contained way for
-                securely transmitting information between parties as a JSON
-                object. If we use JWT then our api data will be accesable for
-                varified user . Without verify user can not able to acces data
-                form api or sever side.
+                Unit testing is a software development process where the
+                smallest testable part of an application, called a unit, is
+                verified individually and independently for proper operation.
+                Before deploy our application we should ensuring unit testing of
+                the code. Becasue of during the product development life cycle,
+                unit testing saves time and money and helps developers write
+                better code more efficiently.
             </p>
         </div>
     );

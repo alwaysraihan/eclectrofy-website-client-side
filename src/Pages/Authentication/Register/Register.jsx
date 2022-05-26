@@ -6,9 +6,10 @@ import {
     useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import Loading from "../../SharedPages/Loading/Loading";
+
 import auth from "../../../Firebase-Setup/firebase.init";
 import useToken from "../../../hooks/useToken";
+import LoadingData from "../../../Components/Loading/LoadingData";
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
@@ -42,7 +43,11 @@ const Register = () => {
     }
 
     if (loading || loading1) {
-        return <Loading></Loading>;
+        return (
+            <div className="my-5">
+                <LoadingData></LoadingData>
+            </div>
+        );
     }
     if (error || updateError || error1) {
         errorText = (
@@ -66,12 +71,12 @@ const Register = () => {
                 <div className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md">
                     <div className="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly">
                         <div className="my-3 text-4xl font-bold tracking-wider text-center">
-                            <a href="/">Social Media</a>
+                            <a href="/">ElectroFy</a>
                         </div>
-                        <p className="mt-6 font-normal text-center text-gray-300 md:mt-0">
-                            All the features you'll ever need to manage your
-                            business Give us a try. There's nothing to install.
-                            No training manuals needed. No commitments.
+                        <p className="mt-6 font-normal text-center capitalize text-gray-300 md:mt-0">
+                            Find Your Best Mobile Repairing Tools. You can join
+                            with us as a employee. Here you can buy our products
+                            with secuire payment system.
                         </p>
                         <p className="flex flex-col items-center justify-center mt-10 text-center">
                             <span>Already have an account?</span>
