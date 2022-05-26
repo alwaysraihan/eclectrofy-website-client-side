@@ -16,6 +16,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/HomePage/Home/Home";
 import Purchase from "./Pages/MyCart/Purchase";
+import Protfolio from "./Pages/Protfolio/Protfolio";
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/portfolio" element={<Protfolio />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/purchase/:id" element={<Purchase />} />
                 <Route
